@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    font-family: "Montserrat";
+    transition: all ease-in-out 0.1s;
+}
+
+:root {
+    --primary-color: #415a77;
+    --secondary-color: #1b263b;
+    --color-text: #e0e1dd;
+    --secondary-text: #0d1b2a;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    background-color: var(--color-text);
+    color: var(--secondary-text);
+    position: relative;
+}
+.main_img {
+    height: 300px;
+    width: 100%;
+    object-fit: contain;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+.main_img img {
+    height: 90%;
+    mix-blend-mode: multiply;
+    object-fit: contain;
+}
+.footer_img {
+    height: 300px;
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 1rem;
+}
+.footer_img_container {
+    object-fit: contain;
+    height: 100px;
+    width: 100px;
+}
+.footer_img_container img {
+    height: 90%;
+    mix-blend-mode: multiply;
+}
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    justify-content: space-around;
+}
+.main_form {
+    display: flex;
+    width: 95%;
+    align-items: center;
+    justify-content: center;
+    color: var(--secondary-text);
+    gap: 10px;
+    font-weight: 600;
+    font-size: 1.2rem;
+    letter-spacing: .007em;
+}
+.main_form_item {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--primary-color);
+    height: 100%;
+    padding: .5rem 0;
+    background-color: var(--color-text);
+    gap: 15px;
+}
+.main_form_item div {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+input, select {
+    background-color: transparent;
+    border: none;
+    padding: 10px;
+    outline: none;
+    border-bottom: 2px solid var(--primary-color);
+}
+input:hover , select:hover {
+    border-color: #0d1b2a;
+}
+.main_form_item:hover {
+    scale: 1.02;
+    z-index: 100;
+}
+.main_form_item.left {
+    border-radius: 28px 0 0 28px;
+}
+.main_form_item.right {
+    border-radius: 0 28px 28px 0;
+    background-color: var(--primary-color);
+}
+input[type="submit"] {
+    width: 100%;
+    height: 100%;
+    border: none;
+    font-size: 2rem;
+    color: var(--color-text);
+    cursor: pointer;
+}
+
+
+/* Calendario */
+
+.card-calender {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--color-text);
+    color: var(--secondary-text);
+    box-shadow: 6px 13px 31px 9px rgba(0,0,0,0.1);
+    border-radius: 28px;
+    padding: 10px;
+    z-index: 1002;
+}
+.calendar-range {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    padding: 2rem 3rem;
+    flex-wrap: wrap;
+}
+
+.calender_container_img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 100000;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 750px) {
+    .main_form {
+        flex-direction: column;
+        gap: 40px;
+    }
+    .main_form_item {
+        width: 95%;
+        border-radius: 29px !important;
+    }
+    .footer_img {
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+    mariadb:
+        image: 'mariadb:11.0'        
+        volumes:
+            - 'database-data:/var/lib/mysql'
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
+            - MYSQL_DATABASE=my_app
+            - MYSQL_USER=my_user
+            - MYSQL_PASSWORD=my_pwd
+        ports:
+            - '29003:3306'
+        restart: always
+    webserver:
+        image: 'php:7.4-apache'
+        working_dir: '/var/www/html'
+        volumes:
+            - '.:/var/www/html'
+        ports:
+            - '29000:80'
+        restart: always   
+    pma:
+        image: 'phpmyadmin:latest'
+        ports:
+            - '29005:80'
+        links:
+            - 'mariadb:db'
+        environment:
+            - PMA_ARBITRARY=1
+volumes:
+    database-data: {}
