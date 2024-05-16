@@ -17,12 +17,12 @@
         <Form class="main_form" onsubmit="cotizar(event)" >
             <div class="main_form_item left" >
                 <div>
-                    <p>Nombre</p>
-                    <input type="text" placeholder="Nombre" required min="1" maxlength="50" id="name"/>
+                    <p>Agenda</p>
+                    <input type="text" placeholder="Nombre de agencia" required min="1" maxlength="50" id="name"/>
                 </div>
                 <div>
                     <p>Fecha de salida</p>
-                    <input type="text" readonly required id="fecha_ida" placeholder="Agrega una fecha de salida" min="1" maxlength="20" />
+                    <input type="date" required id="fecha_ida" placeholder="Sin vuelo redondo" min="1" maxlength="20" />
                 </div>
             </div>
             <div class="main_form_item" >
@@ -32,13 +32,16 @@
                 </div>
                 <div>
                     <p>Fecha de Regreso</p>
-                    <input type="text" readonly id="fecha_regreso" required min="1" maxlength="20" placeholder="Agrega una fecha de regreso" />
+                    <input type="text" id="fecha_regreso" disabled  min="1" maxlength="20" placeholder="Agrega una fecha de regreso" />
                 </div>
             </div>
             <div class="main_form_item" >
-                <div>
-                    <p>Destino</p>
-                    <input type="text" placeholder="Destino en formato IATA" required min="1" maxlength="50"  id="destination"/>
+                <div class="main_form_vuelo_redondo">
+                    <div>
+                        <p>Origen</p>
+                        <input type="text" placeholder="Origen" required min="1" maxlength="50"  id="origen"/>
+                    </div>
+                   
                 </div>
                 <div>
                     <p>Numero de pasajeros</p>
@@ -52,12 +55,38 @@
                         <option value="7">7 pasajeros</option>
                         <option value="8">8 pasajeros</option>
                         <option value="9">9 pasajeros</option>
-                        <option value="10">10 pasajeros</option>
                     </select>
                 </div>
             </div>
+            <div class="main_form_item" >
+                <div class="main_form_vuelo_redondo">
+                    <div>
+                        <p>Destino</p>
+                        <input type="text" placeholder="Destino en formato IATA" required min="1" maxlength="50"  id="destination"/>
+                    </div>
+                    
+                </div>
+                <div>
+                    <div>
+                        <p>Vuelo redondo</p>
+                        <label class="plane-switch">
+                            <input type="checkbox" id="redondo">
+                            <plane-switch>
+                                <plane-icon>
+                                    <svg viewBox="0 0 13 13">
+                                        <path d="M1.55989957,5.41666667 L5.51582215,5.41666667 L4.47015462,0.108333333 L4.47015462,0.108333333 C4.47015462,0.0634601974 4.49708054,0.0249592654 4.5354546,0.00851337035 L4.57707145,0 L5.36229752,0 C5.43359776,0 5.50087375,0.028779451 5.55026392,0.0782711996 L5.59317877,0.134368264 L7.13659662,2.81558333 L8.29565964,2.81666667 C8.53185377,2.81666667 8.72332694,3.01067661 8.72332694,3.25 C8.72332694,3.48932339 8.53185377,3.68333333 8.29565964,3.68333333 L7.63589819,3.68225 L8.63450135,5.41666667 L11.9308317,5.41666667 C12.5213171,5.41666667 13,5.90169152 13,6.5 C13,7.09830848 12.5213171,7.58333333 11.9308317,7.58333333 L8.63450135,7.58333333 L7.63589819,9.31666667 L8.29565964,9.31666667 C8.53185377,9.31666667 8.72332694,9.51067661 8.72332694,9.75 C8.72332694,9.98932339 8.53185377,10.1833333 8.29565964,10.1833333 L7.13659662,10.1833333 L5.59317877,12.8656317 C5.55725264,12.9280353 5.49882018,12.9724157 5.43174295,12.9907056 L5.36229752,13 L4.57707145,13 L4.55610333,12.9978962 C4.51267695,12.9890959 4.48069792,12.9547924 4.47230803,12.9134397 L4.47223088,12.8704208 L5.51582215,7.58333333 L1.55989957,7.58333333 L0.891288881,8.55114605 C0.853775374,8.60544678 0.798421006,8.64327676 0.73629202,8.65879796 L0.672314689,8.66666667 L0.106844414,8.66666667 L0.0715243949,8.66058466 L0.0715243949,8.66058466 C0.0297243066,8.6457608 0.00275502199,8.60729104 0,8.5651586 L0.00593007386,6.85813984 C0.64492547,6.67265611 0.6577034,6.47392717 0.619193545,6.28316421 L0.580694768,6.14191703 L0.00601851064,4.48064746 C0.00203480725,4.4691314 0,4.45701613 0,4.44481314 C0,4.39994001 0.0269259152,4.36143908 0.0652999725,4.34499318 L0.106916826,4.33647981 L0.672546853,4.33647981 C0.737865848,4.33647981 0.80011301,4.36066329 0.848265401,4.40322477 L0.89131128,4.45169723 L1.55989957,5.41666667 Z" fill="currentColor"></path>
+                                    </svg>
+                                </plane-icon>
+                                <span class="street-middle"></span>
+                                <span class="cloud"></span>
+                                <span class="cloud two"></span>
+                            </plane-switch>
+                        </label>
+                    </div>  
+                </div>
+            </div>
             <div class="main_form_item right" >
-                <input type="submit" value="Cotizar" />
+                <input type="submit" value="Solicitar cotización" />
             </div>
         </Form>
 
@@ -74,39 +103,7 @@
         </div>
     </main>
 
-    <div class="card-calender" id="calender" style="display: none;" id="calender">
-        <img class="calender_container_img" onclick="handleCalender();" src="./src/assets/svg/close.svg" />
-        <calendar-range 
-            months="2" 
-            min="2024-01-01"
-            max="2100-12-31"
-            id="calender-range"
-            >
-          <svg
-            aria-label="Previous"
-            slot="previous"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-          >
-            <path d="M15.75 19.5 8.25 12l7.5-7.5"></path>
-          </svg>
-          <svg
-            aria-label="Next"
-            slot="next"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-          >
-            <path d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
-          </svg>
-          <div class="grid calendar-range">
-            <calendar-month></calendar-month>
-            <calendar-month offset="1"></calendar-month>
-          </div>
-        </calendar-range>
-      </div>
-
     <script src="./src/javascript/index.js"></script>
-    <script type="module" src="https://unpkg.com/cally"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 </html>

@@ -5,17 +5,20 @@ require_once('../PHPMailer/class.phpmailer.php');
 // Vars
 $name = $_GET["name"];
 $email = $_GET["mail"];
+$origen = $_GET["origen"];
 $destino = $_GET["destino"];
 $pasajeros = $_GET["pasajeros"];
 $fecha_salida = $_GET["fecha_salida"];
-$fecha_regreso = $_GET["fecha_regreso"];
+$fecha_regreso = isset($_GET["fecha_regreso"]) ? $_GET["fecha_regreso"] : "";
+
+$redondo = isset($_GET["redondo"]) && $_GET["redondo"] === "true";
 
 //Create an instance; passing `true` enables exceptions
 $mail = new PHPMailer(true);
 $nombreHotel = "Cotizacion";
 $imagenEncabezado = "../assets/img/d5aec425-e4c4-4c46-a5a9-9f2269ae9de1.jpeg";
 $imagenID = $mail->AddEmbeddedImage($imagenEncabezado, 'd5aec425-e4c4-4c46-a5a9-9f2269ae9de1', "d5aec425-e4c4-4c46-a5a9-9f2269ae9de1.jpeg");
-$correo="dave_u@outlook.com";
+$correo="gerenciareservaciones@learntoflyoperadora.com.mx";
 
 try {
     //Server settings                   //Enable verbose debug output
@@ -103,14 +106,16 @@ try {
                 </div>
                 <div class="content">
                     <p>Estimado/a</p>
-                    <p>Solicitud para una cotización para las siguientes fechas:</p>
+                    <p>Solicitud de una cotización para las siguientes fechas:</p>
                     <div class="reservation-details">
                         <p><strong>Nombre:</strong> '.$name.'</p>
                         <p><strong>Email:</strong> '.$email.'</p>
-                        <p><strong>Destino:</strong> '.$destino.'</p>
+                        <p><strong>Origen:</strong> '.$origen.'</p>
+                        <p><strong>Destino formato (IATA):</strong> '.$destino.'</p>
                         <p><strong>Pasajeros:</strong> '.$pasajeros .'</p>
                         <p><strong>Fecha de salida:</strong> '.$fecha_salida.'</p>
-                        <p><strong>Fecha de regreso:</strong> '.$fecha_regreso.'</p>
+                        '.($fecha_regreso ? "<p><strong>Fecha de regreso:</strong>  $fecha_regreso </p>" : "").'
+                        '.($redondo ? "<p><strong>Viaje redondo:</strong> Si</p>" : "").'
                     </div>
                     <!-- <p>Por favor, no dudes en ponerte en contacto con nosotros si necesitas realizar alguna modificación o tienes alguna pregunta sobre la reserva.</p> -->
                     <!-- <p>Esperamos con ansias tu llegada y te deseamos una estancia agradable en nuestro hotel.</p> -->
@@ -118,7 +123,6 @@ try {
                 <div class="footer">
                     <p>Atentamente</p>
                     <img src="cid:d5aec425-e4c4-4c46-a5a9-9f2269ae9de1" alt="Logo" class="logo">
-                    <p>El Equipo de '.$nombreHotel.'</p>
                 </div>
             </div>
         </body>
